@@ -1,0 +1,14 @@
+# Arquivos internos: acesso direto bloqueado (exceto a saída do sistema)
+<IfModule mod_authz_core.c>
+    Require all denied
+    <Files "logout.php">
+        Require all granted
+    </Files>
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+    <Files "logout.php">
+        Allow from all
+    </Files>
+</IfModule>

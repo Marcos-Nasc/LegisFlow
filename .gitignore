@@ -1,0 +1,4 @@
+includes/config.local.php
+includes/config.local.php.bak
+maintenance.flag
+images/*.anterior.png

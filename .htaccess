@@ -1,0 +1,19 @@
+# ReviverLegisFlow — proteções básicas (Apache)
+Options -Indexes
+
+# Bloqueia arquivos sensíveis em qualquer pasta
+<FilesMatch "(^\.|\.(sql|bak|log|lock|md|flag|example\.php)$|^composer\.(json|lock)$)">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js|woff2|png|svg)$">
+        Header set Cache-Control "public, max-age=2592000"
+    </FilesMatch>
+</IfModule>
